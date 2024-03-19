@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz con Flexbox</title>
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            
+            display: none;
+        }   
+        .grid-container {
+            display: grid;
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+        }
+        .grid-item {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            color: #fff;
+            border-radius: 15px;
+        }
+
+        .back{
+            display: none;
+        }
+        
+        .form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+        }
+
+        input{
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form">
+    <p>inserisci il numero 1:</p> <input type="number" id="number1" value="3">
+    <p>inserisci il numero 2:</p> <input type="number" id="number2" value="5">
+    <p>inserisci la quantità:</p> <input type="number" id="quantity" value="25">
+    <button class="genera" onclick="fizzbuzz()">Genera</button>
+    </div>
+    <button class="back" onclick="location.reload()">Back</button>
+    <div class="container">
+    <div id="fizzbuzzGrid" class="grid-container"></div>
+    </div>
+
+    <script>
+
+    number1 = 3;
+    number2 = 5;
+    quantity = 25;
+
+
+    function fizzbuzz() {
+    number1 = document.getElementById('number1').value;
+    number2 = document.getElementById('number2').value;
+    quantity = document.getElementById('quantity').value;
+    document.getElementById('fizzbuzzGrid').innerHTML = '';
+    document.querySelector('.container').style.display = 'flex';
+    document.querySelector('.back').style.display = 'flex';
+    document.querySelector('.form').style.display = 'none';
+
+    let sqrt = Math.floor(Math.sqrt(quantity));
+    document.getElementById('fizzbuzzGrid').style.gridTemplateColumns = `repeat(${sqrt}, 1fr)`;
+
+    for (let i = 1; i <= quantity; i++) {
+        let item = document.createElement('div');
+        item.classList.add('grid-item');
+        if (i % number1 === 0 && i % number2 === 0) {
+            item.textContent = 'FizzBuzz';
+        } else if (i % number1 === 0) {
+            item.textContent = 'Fizz';
+        } else if (i % number2 === 0) {
+            item.textContent = 'Buzz';
+        } else {
+            item.textContent = i;
+        }
+        document.getElementById('fizzbuzzGrid').appendChild(item);
+    }
+}
+
+    </script>
+</body>
+</html>
