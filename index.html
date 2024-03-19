@@ -13,8 +13,7 @@
         .container{
             display: flex; 
             align-items: center;
-            justify-content: center;
-            
+            justify-content: center; 
             display: none;
         }   
         .grid-container {
@@ -40,7 +39,6 @@
         
         .form{
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 90vh;
@@ -53,6 +51,7 @@
             box-sizing: border-box;
             border: 1px solid #000;
             border-radius: 5px;
+            margin-right: 10px;
         }
 
         button{
@@ -65,14 +64,15 @@
             border: none;
             border-radius: 5px;
         }
+        
     </style>
 </head>
 <body>
 
     <div class="form">
-    <p>inserisci il numero 1:</p> <input type="number" id="number1" value="3">
-    <p>inserisci il numero 2:</p> <input type="number" id="number2" value="5">
-    <p>inserisci la quantità:</p> <input type="number" id="quantity" value="25">
+    <input type="number" id="number1" value="3">
+    <input type="number" id="number2" value="5">
+    <input type="number" id="quantity" value="25">
     <button class="genera" onclick="fizzbuzz()">Genera</button>
     </div>
     <button class="back" onclick="location.reload()">Back</button>
@@ -82,9 +82,9 @@
 
     <script>
 
-    number1 = 3;
-    number2 = 5;
-    quantity = 25;
+    let number1 = 3;
+    let number2 = 5;
+    let quantity = 25;
 
 
     function fizzbuzz() {
